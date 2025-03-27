@@ -13,9 +13,7 @@ const LoginSignUp = ({ history, location }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const { error, loading, isAuthenticated } = useSelector(
-    (state) => state.user
-  );
+  const { error, loading, isAuthenticated } = useSelector((state) => state.user);
 
   const loginTab = useRef(null);
   const registerTab = useRef(null);
@@ -44,11 +42,13 @@ const LoginSignUp = ({ history, location }) => {
     e.preventDefault();
 
     const myForm = new FormData();
+    
 
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
+    
     dispatch(register(myForm));
   };
 

@@ -5,6 +5,13 @@
   padding: 4rem 0;
 }
 
+.sidebar > button{
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  text-align: start;
+}
+
 .sidebar > a:first-child {
   padding: 0;
 }
@@ -16,14 +23,15 @@
 .sidebar > a > img:hover {
   filter: drop-shadow(0 0 10px tomato);
 }
-.sidebar a {
+.sidebar a, button {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.493);
   font: 200 1rem "Roboto";
   padding: 2rem;
   transition: all 0.5s;
 }
-.sidebar a:hover {
+.sidebar a:hover,
+.sidebar button:hover {
   color: tomato;
   transform: scale(1.1);
 }
