@@ -7,14 +7,10 @@
     "install:frontend": "cd frontend && npm install",
     "install:backend": "cd backend && npm install",
     "install": "npm run install:frontend && npm run install:backend",
-    
-    "start:frontend": "cd frontend && npm run build", 
+    "start:frontend": "cd frontend && npm run build",
     "start:backend": "cd backend && npm start",
     "start:prod": "npm run start:frontend && npm run start:backend"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "concurrently": "^9.1.2"
-  }
+  "license": "ISC"
 }
