@@ -13,6 +13,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 import axios from "axios";
+import { serverUrl } from "../../constants/serverUrl";
 import "./payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
@@ -57,7 +58,7 @@ const Payment = ({ history }) => {
         },
       };
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        `${serverUrl}/api/v1/payment/process`,
         paymentData,
         config
       );
