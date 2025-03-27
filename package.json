@@ -4,14 +4,13 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js",
-    "frontend-start": "cd frontend && npm start",
-    "frontend-build": "cd frontend && npm run build",
-    "frontend-install": "cd frontend && npm install",
-    "backend-install": "cd backend && npm install",
-    "render-postbuild": "concurrently \"npm run frontend-install\" \"npm run frontend-build\" \"npm run backend-install\" \"npm start\""
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install",
+    "install": "npm run install:frontend && npm run install:backend",
+    
+    "start:frontend": "cd frontend && npm run build", 
+    "start:backend": "cd backend && npm start",
+    "start:prod": "npm run start:frontend && npm run start:backend"
   },
   "author": "",
   "license": "ISC",
