@@ -9,7 +9,7 @@
     "install": "npm run install:frontend && npm run install:backend",
     "start:frontend": "cd frontend && npm run build",
     "start:backend": "cd backend && npm start",
-    "start:prod": "npm run start:frontend && npm run start:backend"
+    "start:prod": "npm run start:backend && npm run start:frontend"
   },
   "author": "",
   "license": "ISC"
