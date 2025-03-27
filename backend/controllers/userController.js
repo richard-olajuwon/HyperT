@@ -8,13 +8,42 @@ const cloudinary = require("cloudinary");
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+  const { name, email, password } = req.body;
+
+  const minLength = 8;
+  const hasUpperCase = /[A-Z]/.test(password);
+  const hasLowerCase = /[a-z]/.test(password);
+  const hasNumbers = /\d/.test(password);
+  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+  if(!name || name === ''){
+    return next(new ErrorHander("Enter your name", 400));
+  }
+
+  if(!email || email === ''){
+    return next(new ErrorHander("Enter your email", 400));
+  }
+
+  if(!password || password === ''){
+    return next(new ErrorHander("Enter your Password", 400));
+  }
+
+  if (password.length < minLength) {
+    return next(new ErrorHander("Password length is less than 8", 400));
+  }
+  else if (!hasUpperCase || !hasLowerCase || !hasNumbers || !hasSpecialChar) {
+    return next(new ErrorHander("Password is too weak. Try including uppercase and lowercase letters, numbers, and symbols.", 400));
+  }
+
+  if(!req.body.avatar || !(req.body.avatar).startsWith('data')){
+    return next(new ErrorHander("Upload your profile pics", 400));
+  }
+
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatars",
     width: 150,
     crop: "scale",
   });
-
-  const { name, email, password } = req.body;
 
   const user = await User.create({
     name,
@@ -24,6 +53,12 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
       public_id: myCloud.public_id,
       url: myCloud.secure_url,
     },
+  });
+
+  await sendEmail({
+    email: user.email,
+    subject: `Welcome to HyperT`,
+    message: 'An Online store designed for your needs',
   });
 
   sendToken(user, 201, res);

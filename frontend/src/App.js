@@ -10,7 +10,7 @@ import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
 import Search from "./component/Product/Search";
 import LoginSignUp from "./component/User/LoginSignUp";
-import store from "./store";
+import { store } from "./store";
 import { loadUser } from "./actions/userAction";
 import UserOptions from "./component/layout/Header/UserOptions";
 import { useSelector } from "react-redux";
@@ -24,6 +24,7 @@ import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder";
 import axios from "axios";
+import { serverUrl } from "./constants/serverUrl.js";
 import Payment from "./component/Cart/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -49,7 +50,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+    const { data } = await axios.get(`${serverUrl}/api/v1/stripeapikey`);
     setStripeApiKey(data.stripeApiKey);
   }
 
@@ -70,8 +71,6 @@ function App() {
     }
     //eslint-disable-next-line
   }, []);
-
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
     <Router>
@@ -101,11 +100,7 @@ function App() {
 
         <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
 
-        <ProtectedRoute
-          exact
-          path="/password/update"
-          component={UpdatePassword}
-        />
+        <ProtectedRoute exact path="/password/update" component={UpdatePassword} />
 
         <Route exact path="/password/forgot" component={ForgotPassword} />
 
@@ -125,24 +120,11 @@ function App() {
 
         <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
 
-        <ProtectedRoute
-          isAdmin={true}
-          exact
-          path="/admin/dashboard"
-          component={Dashboard}
-        />
-        <ProtectedRoute
-          exact
-          path="/admin/products"
-          isAdmin={true}
-          component={ProductList}
-        />
-        <ProtectedRoute
-          exact
-          path="/admin/product"
-          isAdmin={true}
-          component={NewProduct}
-        />
+        <ProtectedRoute isAdmin={true} exact path="/admin/dashboard" component={Dashboard} />
+
+        <ProtectedRoute exact path="/admin/products" isAdmin={true} component={ProductList} />
+
+        <ProtectedRoute exact path="/admin/product" isAdmin={true} component={NewProduct} />
 
         <ProtectedRoute
           exact

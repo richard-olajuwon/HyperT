@@ -30,9 +30,12 @@
   display: grid;
   place-items: center;
   width: 100%;
+  position: relative;
+  top: 55px;
+  z-index: 2;
 }
 .login_signUp_toggle > p:hover {
-  color: tomato;
+  color: brown;
 }
 
 .LoginSignUpBox > div > button {
