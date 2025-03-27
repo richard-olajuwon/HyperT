@@ -26,6 +26,12 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     },
   });
 
+  await sendEmail({
+    email: user.email,
+    subject: `Welcome to HyperT`,
+    message: 'Welcome to an Online store made just for you',
+  });
+
   sendToken(user, 201, res);
 });
 
@@ -89,7 +95,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   try {
     await sendEmail({
       email: user.email,
-      subject: `Ecommerce Password Recovery`,
+      subject: `HyperT Password Recovery`,
       message,
     });
 

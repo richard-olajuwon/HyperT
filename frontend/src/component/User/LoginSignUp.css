@@ -13,18 +13,19 @@
 
 .LoginSignUpBox {
   background-color: white;
-  width: 25vw;
+  width: 90%;
+  max-width: 500px;
   height: 70vh;
   box-sizing: border-box;
   overflow: hidden;
 }
 .login_signUp_toggle {
   display: flex;
-  height: 3vmax;
+  height: 50px;
 }
 .login_signUp_toggle > p {
   color: rgba(0, 0, 0, 0.678);
-  font: 300 1vmax "Roboto";
+  font: 300 1rem "Roboto";
   transition: all 0.5s;
   cursor: pointer;
   display: grid;
@@ -33,6 +34,11 @@
 }
 .login_signUp_toggle > p:hover {
   color: tomato;
+}
+
+.LoginSignUpBox > div{
+  height: 55px;
+  overflow: hidden;
 }
 
 .LoginSignUpBox > div > button {
@@ -73,7 +79,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
-  font: 300 0.9vmax cursive;
+  font: 300 1rem cursive;
   outline: none;
 }
 
@@ -90,7 +96,7 @@
   text-decoration: none;
   align-self: flex-end;
   transition: all 0.5s;
-  font: 500 0.8vmax "Gill Sans";
+  font: 500 0.9rem "Gill Sans";
 }
 
 .loginForm > a:hover {
@@ -129,7 +135,7 @@
   border: none;
   background-color: tomato;
   color: white;
-  font: 300 0.9vmax "Roboto";
+  font: 300 0.9rem "Roboto";
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;

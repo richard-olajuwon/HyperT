@@ -2,6 +2,7 @@ import React from "react";
 import playStore from "../../../images/playstore.png";
 import appStore from "../../../images/Appstore.png";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -21,10 +22,9 @@ const Footer = () => {
       </div>
 
       <div className="rightFooter">
-        <h4>Follow Us</h4>
-        <a href="http://google.com">Instagram</a>
-        <a href="http://google.com">Youtube</a>
-        <a href="http://google.com">Facebook</a>
+        <h4>Quick Links</h4>
+        <Link to='/about'>About Us</Link>
+        <Link to='/contact'>Contact Us</Link>
       </div>
     </footer>
   );

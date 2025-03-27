@@ -10,7 +10,7 @@ import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
 import Search from "./component/Product/Search";
 import LoginSignUp from "./component/User/LoginSignUp";
-import store from "./store";
+import {store} from "./store";
 import { loadUser } from "./actions/userAction";
 import UserOptions from "./component/layout/Header/UserOptions";
 import { useSelector } from "react-redux";
@@ -70,8 +70,6 @@ function App() {
     }
     //eslint-disable-next-line
   }, []);
-
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
     <Router>

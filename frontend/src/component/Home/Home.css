@@ -3,7 +3,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vmin;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -15,11 +15,11 @@
 .banner > h1 {
   margin: 5vmax;
 
-  font: 600 2.5vmax "Roboto";
+  font: 600 2.5rem "Roboto";
 }
 
 .banner > p {
-  font: 300 2.5vmax "Lucida Sans";
+  font: 300 2.5rem "Lucida Sans";
 }
 
 .banner > a > button {
@@ -31,23 +31,11 @@
   padding: 1vmax;
   transition: all 0.5s;
   width: 9vmax;
-  font: 500 1vmax "Roboto";
+  font: 500 1rem "Roboto";
 }
 .banner > a > button:hover {
   background-color: rgba(255, 255, 255, 0);
   color: white;
-}
-
-.banner::after {
-  content: "";
-  width: 100vw;
-  height: 100vmin;
-  background-color: #ffffff;
-  position: absolute;
-  top: 0%;
-  left: 0;
-  clip-path: polygon(100% 68%, 0 100%, 100% 100%);
-  max-width: 100%;
 }
 
 .homeHeading {
