@@ -1,4 +1,4 @@
-footer {
+#footer {
   margin-top: 10vmax;
   padding: 2vmax;
   background-color: rgb(34, 33, 33);
@@ -8,7 +8,7 @@ footer {
 }
 
 .leftFooter {
-  width: 20%;
+  width: 30%;
   display: flex;
 
   flex-direction: column;
@@ -31,7 +31,7 @@ footer {
 }
 
 .midFooter {
-  width: 60%;
+  width: 40%;
 
   text-align: center;
 }
@@ -42,13 +42,12 @@ footer {
   color: #eb4034;
 }
 .midFooter > p {
-  max-width: 60%;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin: 1vmax auto;
 }
 
 .rightFooter {
-  width: 20%;
+  width: 30%;
 
   display: flex;
   flex-direction: column;
@@ -70,4 +69,23 @@ footer {
 
 .rightFooter > a:hover {
   color: #eb4034;
+}
+
+@media (max-width: 800px) {
+  #footer{
+    flex-wrap: wrap;
+  }
+  .leftFooter{
+    order: 3;
+    width: 100%;
+    margin-top: 30px;
+  }
+  .midFooter{
+    order: 1;
+    width: 50%;
+  }
+  .rightFooter{
+    order: 2;
+    width: 50%;
+  }
 }
