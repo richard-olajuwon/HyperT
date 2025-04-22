@@ -14,6 +14,7 @@
   padding: 0 5vmax;
   justify-content: center;
   min-height: 30vh;
+  margin-left: 7vmax;
 }
 
 .paginationBox {
@@ -68,7 +69,7 @@
 
 .filterBox {
   width: 10vmax;
-  position: absolute;
+  position: fixed;
   top: 10vmax;
   left: 4vmax;
 }
@@ -80,7 +81,7 @@
 .category-link {
   list-style: none;
   color: rgba(0, 0, 0, 0.61);
-  font: 400 0.8vmax "Roboto";
+  font: 600 1rem "Roboto";
   margin: 0.4vmax;
   cursor: pointer;
   transition: all 0.5s;
@@ -98,6 +99,10 @@
     width: 20vmax;
     position: static;
     margin: auto;
+  }
+
+  .products{
+    margin-left: 0;
   }
 
   .page-link {
