@@ -87,7 +87,7 @@
 
 .productCard > p {
   font-family: "Roboto";
-  font-size: 1.2vmax;
+  font-size: 1rem;
   margin: 1vmax 0.5vmax;
   margin-bottom: 0;
 }
