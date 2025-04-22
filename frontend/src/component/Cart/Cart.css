@@ -161,7 +161,6 @@
   }
 
   .cartGrossProfit {
-    display: grid;
     grid-template-columns: 0fr 2fr;
   }
 
