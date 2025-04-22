@@ -82,7 +82,8 @@ const Cart = ({ history }) => {
                     item.price * item.quantity
                   }`}</p>
                 </div>
-              ))}
+              ))
+            }
 
             <div className="cartGrossProfit">
               <div></div>
