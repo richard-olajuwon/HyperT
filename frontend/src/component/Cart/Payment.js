@@ -11,15 +11,16 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-
 import axios from "axios";
 import "./payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { createOrder, clearErrors } from "../../actions/orderAction";
+import { useHistory } from "react-router-dom";
 
-const Payment = ({ history }) => {
+
+const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ const Payment = ({ history }) => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
+
+  const history = useHistory();
+
 
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
@@ -59,7 +63,7 @@ const Payment = ({ history }) => {
       const { data } = await axios.post(
         "/api/v1/payment/process",
         paymentData,
-        config
+        config,
       );
 
       const client_secret = data.client_secret;
@@ -84,26 +88,26 @@ const Payment = ({ history }) => {
       });
 
       if (result.error) {
+        console.log("Error result");
         payBtn.current.disabled = false;
 
-        alert.error(result.error.message);
+        alert.error(result.error?.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
           order.paymentInfo = {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
           };
-
           dispatch(createOrder(order));
-
           history.push("/success");
         } else {
           alert.error("There's some issue while processing payment ");
         }
       }
     } catch (error) {
+      console.log("Ctch result");
       payBtn.current.disabled = false;
-      alert.error(error.response.data.message);
+      alert.error(error.response?.data?.message);
     }
   };
 
@@ -136,7 +140,7 @@ const Payment = ({ history }) => {
 
           <input
             type="submit"
-            value={`Pay - $${orderInfo && orderInfo.totalPrice}`}
+            value={`Pay - $${orderInfo && orderInfo.totalPrice.toFixed(2)}`}
             ref={payBtn}
             className="paymentFormBtn"
           />
