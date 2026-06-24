@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect } from "react";
-import Header from "./component/layout/Header/Header.js";
+import DropDown from "./component/layout/Header/DropDown.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
@@ -63,7 +63,7 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <DropDown />
 
       {isAuthenticated && <UserOptions user={user} />}
 
